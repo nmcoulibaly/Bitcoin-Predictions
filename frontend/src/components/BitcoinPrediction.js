@@ -6,9 +6,10 @@ const BitcoinPrediction = () => {
   const [trades, setTrades] = useState([]);
   const [predictions, setPredictions] = useState([]);
   const ws = useRef(null);
+  const coin = 'btcusdt';
 
   useEffect(() => {
-    ws.current = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
+    ws.current = new WebSocket(`wss://fstream.binance.com/ws/${coin}@trade`);
 
     ws.current.onopen = () => console.log("WebSocket connecté");
 
@@ -65,8 +66,8 @@ const BitcoinPrediction = () => {
     },
     yAxis: {
       type: 'value',
-      min: 66800,
-      max: 67400,
+      min: 67600,
+      max: 68000,
       interval: 50
     },
     series: [
